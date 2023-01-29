@@ -1,0 +1,21 @@
+image:
+  file: Dockerfile
+# image: ghcr.io/ConcaveFi/cavepod:latest
+
+tasks:
+  - name: Wellcome to the Cavepod!
+    before: |
+      echo "🤖 add some dot env..."
+      go install github.com/rrobrms/w3w@latest
+      echo "MAINNET_PRIVATE_KEY=$(w3w key | head -c 64)" >> .env
+      echo "GOERLI_PRIVATE_KEY=$(w3w key | head -c 64)" >> .env
+      echo "INFURA_KEY=$INFURA_KEY" >> .env
+      echo "ALCHEMY_MAINNET=$ALCHEMY_MAINNET" >> .env
+    init: |
+      echo "🚀 install and run the app"
+
+vscode:
+  extensions:
+    - golang.go
+    - foxundermoon.shell-format
+    - JuanBlanco.solidity
