@@ -40,6 +40,7 @@ image:
  ### Hosting on ghcr.io
 
  > **Note**
+ >
  > To host the Docker Image on Github Package you need to add a PAT token with the scope of `package`
  > See the github workflow for the push and deploy.
  
