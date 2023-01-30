@@ -1,6 +1,7 @@
 #!/bin/sh
 
-GO_VERSION="1.19.5"
+GO_VERSION=$(curl https://go.dev/dl/?mode=json | jq -r '.[0].version' 2>/dev/null | cut -d "o" -f2)
+GO_VERSION=${GO_VERSION:-1.19.5}
 curl https://dl.google.com/go/go$GO_VERSION.linux-amd64.tar.gz -o go.tar.gz
 tar -C /home/gitpod/ -xzf go.tar.gz
 rm go.tar.gz
